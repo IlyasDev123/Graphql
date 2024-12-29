@@ -1,0 +1,14 @@
+type Product {
+    id: ID!
+    name: String!
+    description: String
+    product_image: String
+    created_at: DateTime!
+    updated_at: DateTime!
+    category: Category @belongsTo
+}
+
+extend type Query {
+    products: [Product!]! @all
+    product(id: ID @eq): Product @find
+}

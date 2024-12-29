@@ -1,0 +1,16 @@
+type Category {
+    id:ID!
+    parent_category_id:integer
+    name:String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    parent:Category @belongsTo
+    products:[Product!]! @hasMany
+}
+
+
+extend type Query {
+
+    categories: [Category!]! @all
+    category(id:ID @eq): Category @find
+}
